@@ -2,8 +2,11 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
+
 #include "Sort.h"
 #include "Generator.h"
+
 #define LEN 10
 
 /*Рекурсивной называется функция, которая вызывает сама себя
@@ -18,11 +21,30 @@
 */
 
 int main(void) {
-	int arr[LEN];
+    int arr[LEN];
+
+    char filename[128];
+    clock_t start, stop;
+
+    printf("Enter filename: ");
+    scanf("%s", filename);
+
+    FILE *out = fopen(filename, "w");
+    
     generator(arr, LEN);
 
-    mergeSort(arr, 0, LEN - 1);
+    fprintf(out, "The array was generated:\n");
+    for(int i = 0; i < LEN; i++) fprintf(out, "%d ", arr[i]);
+    fprintf(out, "\n");
 
-    for(int i = 0; i < LEN; i++) printf("%d ", arr[i]);
-	return 0;
+    start = clock();
+    mergeSort(arr, 0, LEN - 1);
+    stop = clock();
+
+    double dur = (double)(stop - start) / CLOCKS_PER_SEC;
+
+    fprintf(out, "The array was sorted by %lf sec:\n", dur);
+    for(int i = 0; i < LEN; i++) fprintf(out, "%d ", arr[i]);
+
+    return 0;
 }
