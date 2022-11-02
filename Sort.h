@@ -1,30 +1,3 @@
-void indexSort(int* arr, int* ind, int len) {
-	for (int i = 0; i < len; i++) ind[i] = i;
-
-	int tmp;
-	for (int i = 0; i < len; i++) {
-		for (int j = i + 1; j < len; j++) {
-
-            
-			if (arr[ind[i]] > arr[ind[j]]) {
-				tmp = ind[i];
-				ind[i] = ind[j];
-				ind[j] = tmp;
-			}
-
-            printf("arr[ind[j]]: %d, arr[j]: %d\n", arr[ind[j]], arr[j]);
-		}
-	}
-}
-
-void printBound(int* arr, int left, int right){
-    printf("-----\n");
-    for(int i = left; i <= right; i++) printf("%d ", arr[i]);
-    printf("\n");
-}
-
-/*right - left + 1*/
-
 void merge(int* arr, int left, int right){
     int i, j, k, mid, n1, n2;
 
@@ -71,7 +44,6 @@ void merge(int* arr, int left, int right){
 }
 
 void mergeSort(int* arr, int left, int right){
-    printBound(arr, left, right);
     int mid = (left + right - 1)/2;
     if(left < right){
         mergeSort(arr, left, mid);
