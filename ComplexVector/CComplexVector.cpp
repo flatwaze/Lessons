@@ -3,6 +3,9 @@
 
 #include "CComplexVector.hpp"
 
+CComplexVector :: ~CComplexVector(){
+    delete[] vector;
+}
 
 CComplex& CComplexVector :: operator[](int i){
     return vector[i];
