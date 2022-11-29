@@ -7,7 +7,9 @@ class CComplexVector{
         CComplexVector();
         CComplexVector(const CComplexVector& other);
         CComplexVector(CComplex other[]);
-
+        
+        ~CComplexVector();
+    
         CComplex &operator[](int i);
         const CComplexVector operator+(const CComplexVector& other) const;
         const CComplexVector operator-(const CComplexVector& other) const;
