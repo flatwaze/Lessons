@@ -9,6 +9,9 @@ class CString{
 
     public:
         CString();
+        ~CString(){
+            delete[] str;
+        }
         CString(char other[]);
         CString(const CString& other);
 
