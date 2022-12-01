@@ -1,0 +1,5 @@
+The first string is: Quadra
+The second string is: tic
+The first + second is: Quadratic
+The copy of the previous concantenation is: Quadratic
+The size of the it is: 9
