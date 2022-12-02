@@ -5,25 +5,25 @@ using namespace std;
 
 int main(){
     
-    ifstream in("input.txt");
-    ofstream out("output.txt");
+    char string1[] = "Hello, ";
+    char string2[] = "world!";
 
-    char string[LEN];
-    in >> string;
-    CString str1(string);
-    out << "The first string is: " << str1 << endl;
-
-    in >> string;
-    CString str2(string);
-    out << "The second string is: " << str2 << endl;
-
-    CString str3;
+    CString str1(string1), str2, str3;
+    str2 = string2;
     str3 = str1 + str2;
-    out << "The first + second is: " << str3 << endl;
 
-    CString str4(str3);
-    out << "The copy of the previous concantenation is: " << str4 << endl << 
-    "The size of the it is: " << str4.size() << endl;
+    cout << "The first string is: " << str1 << endl
+    << "The second is: " << str2 << endl
+    << "The third is: " << str3 << " length is: " << str3.size() << endl; 
+
+    char string3[] = "The string with new length...";
+
+    str3 = string3;
+
+
+    cout << "The third has been changed: " << str3 << 
+    " length is: " << str3.size() << endl;
+
 
     return 0;
 }
