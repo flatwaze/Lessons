@@ -25,5 +25,5 @@ class CString{
 
         char& operator[](int i);
         friend std :: ostream& operator<<(std :: ostream &out, const CString& s);
-        friend std :: istream& operator>>(std :: istream &out, CString& s);
+        /*friend std :: istream& operator>>(std :: istream &out, CString& s);*/
 };
