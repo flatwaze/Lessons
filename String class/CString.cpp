@@ -1,18 +1,21 @@
 #include "CString.hpp"
 
+int getLength(char str[]){
+    int length = 0;
+    while(str[length] != '\0') length++;
+    return length;
+}
+
 char& CString :: operator[](int i){
     return str[i];
 }
 
 CString :: CString(){
-    str = new char[LEN];
     length = 0;
-
-    str[length] = '\0';
 }
 
 CString :: CString(char other[]){
-    str = new char[LEN];
+    str = new char[getLength(other)];
     length = 0;
 
     while(other[length] != '\0'){
@@ -25,6 +28,8 @@ CString :: CString(char other[]){
 
 CString :: CString(const CString& other){
     length = other.length;
+    
+    str = new char[other.length];
     for(int i = 0; i < other.length; i++){
         str[i] = other.str[i];
     }
@@ -37,7 +42,8 @@ std :: ostream& operator<<(std :: ostream &out, const CString& s){
     return out;
 }
 
-std :: istream& operator>>(std :: istream &in, CString& s){
+/*std :: istream& operator>>(std :: istream &in, CString& s){
+    delete[] s.str;
     in >> s.str;
     s.length = 0;
 
@@ -45,7 +51,7 @@ std :: istream& operator>>(std :: istream &in, CString& s){
         s.length++;
     
     return in;
-}
+}*/
 
 const CString CString :: operator+(const CString& other) const{
     CString ans;
@@ -61,8 +67,25 @@ const CString CString :: operator+(const CString& other) const{
 
 const CString& CString :: operator=(const CString& other){
     length = other.length;
+    delete[] str;
+    str = new char[length];
+
     for(int i = 0; i < other.length; i++){
         str[i] = other.str[i];
+    }
+
+    str[length] = '\0';
+
+    return *this;
+}
+
+const CString& CString :: operator=(char other[]){
+    length = getLength(other);
+    delete[] str;
+    str = new char[length];
+
+    for(int i = 0; i < length; i++){
+        str[i] = other[i];
     }
 
     str[length] = '\0';
